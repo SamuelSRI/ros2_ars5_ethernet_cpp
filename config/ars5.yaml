@@ -1,0 +1,8 @@
+ars5_node:
+  ros__parameters:
+    listen_ip: "0.0.0.0"
+    listen_port: 42102
+    multicast_group: "224.0.2.2"
+    interface_ip: "10.13.1.100"
+    frame_id: "radar_link"
+    max_packets_per_cycle: 64
