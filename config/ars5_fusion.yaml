@@ -1,0 +1,8 @@
+ars5_fusion_node:
+  ros__parameters:
+    fixed_frame: "base_link"
+    output_topic: "/radar/points_fused"
+    radar_id_start: 110
+    radar_id_end: 129
+    publish_rate_hz: 10.0
+    max_cloud_age_sec: 0.3
