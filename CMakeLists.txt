@@ -14,32 +14,38 @@ find_package(tf2 REQUIRED)
 find_package(tf2_ros REQUIRED)
 find_package(tf2_msgs REQUIRED)
 
-include_directories(include)
-
 add_executable(ars5_node
   src/ars5_node.cpp
   src/udp_receiver.cpp
   src/ars5_decoder.cpp
 )
 
-ament_target_dependencies(ars5_node
-  rclcpp
-  sensor_msgs
-  std_msgs
+target_include_directories(ars5_node PUBLIC
+  include
+)
+
+target_link_libraries(ars5_node
+  rclcpp::rclcpp
+  ${sensor_msgs_TARGETS}
+  ${std_msgs_TARGETS}
 )
 
 add_executable(ars5_fusion_node
   src/ars5_fusion_node.cpp
 )
 
-ament_target_dependencies(ars5_fusion_node
-  rclcpp
-  sensor_msgs
-  std_msgs
-  geometry_msgs
-  tf2
-  tf2_ros
-  tf2_msgs
+target_include_directories(ars5_fusion_node PUBLIC
+  include
+)
+
+target_link_libraries(ars5_fusion_node
+  rclcpp::rclcpp
+  ${sensor_msgs_TARGETS}
+  ${std_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  tf2::tf2
+  tf2_ros::tf2_ros
+  ${tf2_msgs_TARGETS}
 )
 
 install(TARGETS
